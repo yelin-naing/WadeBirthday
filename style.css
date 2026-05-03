@@ -533,3 +533,172 @@ kbd {
 #music-btn.muted {
   opacity: 0.55;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE — BREAKPOINTS
+══════════════════════════════════════════════════════════════ */
+
+/* Notched-phone safe areas (iPhone X+, Android cutouts) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  #mobile-controls {
+    bottom: calc(22px + env(safe-area-inset-bottom));
+    left:   calc(22px + env(safe-area-inset-left));
+  }
+  #music-btn {
+    bottom: calc(1.2rem + env(safe-area-inset-bottom));
+    right:  calc(1.2rem + env(safe-area-inset-right));
+  }
+}
+
+/* Faster tap response on touch devices */
+#start-btn,
+.replay-btn,
+.ctrl-btn,
+#music-btn {
+  touch-action: manipulation;
+}
+
+/* ── Small phones  ≤ 480px ─────────────────────────────────── */
+@media (max-width: 480px) {
+  .start-card {
+    padding: 1.8rem 1.4rem;
+  }
+  .start-emoji {
+    font-size: 2.8rem;
+  }
+  .start-sub {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+  .controls-hint {
+    display: none; /* D-pad is visible; keyboard shortcuts aren't relevant */
+  }
+
+  #progress-container { top: 10px; }
+  #progress-bar       { width: min(170px, 38vw); }
+
+  #score-display {
+    top: 8px;
+    right: 8px;
+    font-size: 0.95rem;
+    padding: 5px 12px 5px 10px;
+  }
+
+  /* D-pad top edge ≈ 190px from bottom — popup must clear it */
+  #memory-popup {
+    bottom: 205px;
+    width: 96vw;
+    padding: 0.9rem 1rem;
+  }
+  #memory-img-wrap {
+    height: 155px;
+    margin: -0.9rem -1rem 0.8rem -1rem;
+    width: calc(100% + 2rem);
+  }
+  #memory-emoji-big { font-size: 1.8rem; }
+  #memory-title     { font-size: 0.92rem; }
+  #memory-message   { font-size: 0.82rem; line-height: 1.55; }
+
+  .celeb-content {
+    padding: 1.5rem 1.1rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .celeb-hearts-row { font-size: 1.4rem; }
+  .celeb-message    { font-size: 0.85rem; line-height: 1.65; }
+  .replay-btn       { padding: 0.75rem 1.5rem; font-size: 0.92rem; }
+
+  /* Slightly smaller D-pad buttons on very narrow screens */
+  .ctrl-btn { width: 46px; height: 46px; font-size: 0.88rem; }
+  .dpad-gap  { width: 46px; height: 46px; }
+
+  /* Music button aligned with popup above D-pad */
+  #music-btn {
+    bottom: 205px;
+    right: 0.9rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    font-size: 1rem;
+  }
+}
+
+/* ── Medium phones  481px – 768px ──────────────────────────── */
+@media (min-width: 481px) and (max-width: 768px) {
+  .start-card    { padding: 2.2rem 2rem; }
+  .controls-hint { display: none; }
+
+  #memory-popup {
+    bottom: 195px;
+    padding: 1.2rem 1.5rem;
+  }
+  #memory-img-wrap {
+    height: 200px;
+    margin: -1.2rem -1.5rem 0.9rem -1.5rem;
+    width: calc(100% + 3rem);
+  }
+
+  .celeb-content {
+    padding: 2rem 1.8rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  #music-btn { bottom: 195px; }
+}
+
+/* ── Landscape on phones  (height ≤ 500px) ─────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .start-card {
+    padding: 1rem 2rem;
+    max-width: 520px;
+  }
+  .start-emoji   { font-size: 2.2rem; margin-bottom: 0.2rem; }
+  .start-sub     { font-size: 0.85rem; margin-bottom: 0.8rem; }
+  #start-btn     { padding: 0.6rem 1.6rem; font-size: 0.9rem; }
+  .controls-hint { display: none; }
+
+  #progress-container { top: 6px; }
+  #score-display      { top: 6px; }
+
+  /* Centre popup vertically in landscape — no room at bottom */
+  #memory-popup {
+    bottom: auto;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: min(400px, 58vw);
+    padding: 0.8rem 1rem;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+  #memory-popup.visible {
+    transform: translateX(-50%) translateY(-50%);
+  }
+  #memory-img-wrap {
+    height: 110px;
+    margin: -0.8rem -1rem 0.7rem -1rem;
+    width: calc(100% + 2rem);
+  }
+  #memory-emoji-big { font-size: 1.5rem; }
+  #memory-title     { font-size: 0.9rem; }
+  #memory-message   { font-size: 0.8rem; line-height: 1.5; }
+
+  .celeb-content {
+    padding: 1rem 1.5rem;
+    max-height: 90vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .celeb-hearts-row { font-size: 1.2rem; margin-bottom: 0.4rem; }
+  .celeb-message    { font-size: 0.82rem; line-height: 1.5; }
+  .replay-btn       { padding: 0.6rem 1.4rem; font-size: 0.88rem; }
+
+  #music-btn { bottom: 0.8rem; }
+}
+
+/* ── Tablets in portrait  769px – 1024px ───────────────────── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  #memory-popup  { bottom: 60px; }
+  .celeb-content { max-width: 560px; }
+}
