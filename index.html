@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Love Journey 💕</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Three.js canvas is injected here by script.js -->
+  <div id="canvas-container"></div>
+
+  <!-- ═══════════════════════════════════════════════
+       START SCREEN – shown before journey begins
+  ═══════════════════════════════════════════════ -->
+  <div id="start-screen">
+    <div class="start-card">
+      <div class="start-emoji">💗</div>
+      <h1 class="start-title">Love Journey</h1>
+      <p class="start-sub">A special birthday surprise for Wade, made with love 💕</p>
+      <button id="start-btn">Start the Journey 💕</button>
+      <p class="controls-hint">
+        <kbd>↑</kbd> accelerate &nbsp; <kbd>↓</kbd> reverse<br />
+        <kbd>←</kbd> <kbd>→</kbd> steer &nbsp;—&nbsp; or use the D-pad on mobile
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HUD – PROGRESS BAR (top center)
+  ═══════════════════════════════════════════════ -->
+  <div id="progress-container">
+    <div id="progress-label">Our Journey: 0%</div>
+    <div id="progress-bar">
+      <div id="progress-fill"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HUD – HEART SCORE (top right)
+  ═══════════════════════════════════════════════ -->
+  <div id="score-display">
+    <span class="hud-icon">❤️</span>
+    <span id="score">0</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MEMORY POPUP CARD
+       (fades in when bus reaches a memory trigger)
+  ═══════════════════════════════════════════════ -->
+  <div id="memory-popup">
+    <div id="memory-img-wrap">
+      <img id="memory-img" alt="" />
+      <div id="memory-img-bg"></div>
+    </div>
+    <div id="memory-emoji-big"></div>
+    <h2 id="memory-title"></h2>
+    <p id="memory-message"></p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MOBILE TOUCH CONTROLS — D-pad (hidden on desktop)
+  ═══════════════════════════════════════════════ -->
+  <div id="mobile-controls">
+    <div class="dpad">
+      <div class="dpad-row">
+        <button class="ctrl-btn" id="btn-up">▲</button>
+      </div>
+      <div class="dpad-row dpad-mid">
+        <button class="ctrl-btn" id="btn-left">◀</button>
+        <div class="dpad-gap"></div>
+        <button class="ctrl-btn" id="btn-right">▶</button>
+      </div>
+      <div class="dpad-row">
+        <button class="ctrl-btn" id="btn-down">▼</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       CELEBRATION OVERLAY – shown at journey's end
+  ═══════════════════════════════════════════════ -->
+  <div id="celebration">
+    <!-- Confetti pieces are injected here by JS -->
+    <div id="confetti-container"></div>
+
+    <div class="celeb-content">
+      <div class="celeb-hearts-row">💗 💗 💗</div>
+      <h1 class="celeb-title">Happy 21st Birthday<br />My Love! 🎂</h1>
+      <p class="celeb-message">
+        မွေးနေ့မှစပြီး နောင်နှစ်ပေါင်းများစွာအထိ သက်ရှည်ကျန်းမာပြီး မောင့်ဘေးနားမှာ အမြဲတမ်းပြုံးပြုံးရွှင်ရွှင်နဲ့နေပေးပါနော် 🫶 သဲလေးဖြစ်ချင်တဲ့ လိုအင်ဆန္ဒတွေပြည့်ဝပြီး စိတ်ချမ်းသာမှု ကို ပိုင်ဆိုင်ရသော ဘဝကို ပိုင်ဆိုင်ရပါစေနော်....I will always be your biggest supporter and will be there for you anything Babe❣️  <br>Love ya, Miss ya, and Can’t wait to see you Babe 🤧🫶 </br>
+        <em>I love you more than words can ever say.</em>
+      </p>
+      <p class="celeb-score">
+        You collected <strong id="final-score">0</strong> hearts
+        on our love journey! ❤️
+      </p>
+      <button class="replay-btn" onclick="location.reload()">
+        🔄 Replay our love Journey
+      </button>
+    </div>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="./audio/music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Music toggle button -->
+  <button id="music-btn" title="Toggle music">🎵</button>
+
+  <!-- Three.js r134 – loaded from CDN, puts THREE in global scope -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <!-- Main game logic -->
+  <script src="script.js"></script>
+</body>
+</html>
